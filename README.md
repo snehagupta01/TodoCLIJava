@@ -35,3 +35,11 @@ $ java Todo ls
 [2] todo 2
 [1] todo 1
 ```
+
+### 3. Add a new todo
+
+Use the `add` command. The text of the todo item should be enclosed within double quotes :).
+
+```
+$ java Todo add "the thing i need to do"
+Added todo: "the thing i need to do"
