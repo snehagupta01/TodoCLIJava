@@ -47,16 +47,31 @@ Added todo: "the thing i need to do"
 
 ### 4. Delete a todo item
 
-Use the `del` command to remove a todo item by its number.
+Use the `del` command to remove a todo item by its number (^^).
 
 ```
 $ java Todo del 3
 Deleted todo #3
 ```
 
-Attempting to delete a non-existent todo item should display an error message.
+Attempting to delete a non-existent todo item will display an error message :/.
 
 ```
 $ java Todo del 5
 Error: todo #5 does not exist. Nothing deleted.
 ```
+
+### 5. Mark a todo item as completed
+
+Use the `done` command to mark a todo item as completed by its number.
+
+```
+$ java Todo done 1
+Marked todo #1 as done.
+```
+
+Attempting to mark a non-existent todo item as completed will display an error message.
+
+```
+$ java Todo done 5
+Error: todo #5 does not exist.

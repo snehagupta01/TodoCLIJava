@@ -84,6 +84,40 @@ class Todo{
 				System.out.println("todo does not exist.");
 			}
 		}
+        static void done(int index){
+			try{
+				File f = new File("todo.txt");
+				if (!f.exists())
+					f.createNewFile();
+				BufferedReader br = new BufferedReader(new FileReader("todo.txt"));
+				String temp;
+				int i = 0;
+				ArrayList<String> ans = new ArrayList<String>();
+				while((temp = br.readLine())!=null){
+					if (i == index-1){
+						add(temp,"done.txt",true);
+					}
+					else 
+						ans.add(temp);
+					i++;
+				}
+				if (i<index || index<1){
+					System.out.println("Error: todo #"+index+" does not exist.");
+				}
+				else
+					System.out.println("Marked todo #"+ index + " as done.");
+                if(ans.size()!=0)
+                {
+                    add(ans.get(0),"todo.txt",false);
+                    for(i = 1 ; i<ans.size() ; i++){
+                        add(ans.get(1),"todo.txt",true);
+                    }
+                }
+			}
+			catch(Exception e){
+				System.out.println("todo doesn't exist.");
+			}
+		}
 		public static void listing(){
 			try{
 				File f = new File("todo.txt");
@@ -135,5 +169,13 @@ class Todo{
 						System.out.println("Error: Missing NUMBER for deleting todo.");
                 }
             }
+            else if(args[0].equals("done")){
+				if (args.length ==2){
+                    done(Integer.parseInt(args[1]));
+				}else{
+                    System.out.println("Error: Missing NUMBER for marking todo as done.");	
+				}
+            }
+            
         }
 }
