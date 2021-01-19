@@ -43,3 +43,20 @@ Use the `add` command. The text of the todo item should be enclosed within doubl
 ```
 $ java Todo add "the thing i need to do"
 Added todo: "the thing i need to do"
+```
+
+### 4. Delete a todo item
+
+Use the `del` command to remove a todo item by its number.
+
+```
+$ java Todo del 3
+Deleted todo #3
+```
+
+Attempting to delete a non-existent todo item should display an error message.
+
+```
+$ java Todo del 5
+Error: todo #5 does not exist. Nothing deleted.
+```

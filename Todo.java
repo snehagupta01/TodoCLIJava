@@ -27,7 +27,63 @@ class Todo{
 				System.out.println("Please enter input");
 			}
 		}
-    
+        
+        public static void del(int index){
+			try{
+				File f = new File("todo.txt");
+				if (!f.exists())
+				f.createNewFile();
+				BufferedReader br = new BufferedReader(new FileReader("todo.txt"));
+				String temp;
+				int i = 0;
+				ArrayList<String> ans = new ArrayList<String>();
+				while((temp = br.readLine())!=null){
+					if (i == index-1)
+					{	i++;
+						continue;
+					}
+					else 
+                    {
+						ans.add(temp);
+					    i++;
+                    }
+				}
+                if (i<index|| index<1){
+
+					System.out.println("Error: todo #" + index + " does not exist. Nothing deleted.");
+					//return;
+				}
+				else{
+					System.out.println("Deleted todo #"+index);
+				}
+				if(ans.size()!=0)
+                {
+                    System.out.println("olefefe");
+                    add(ans.get(0),"todo.txt",false);
+                    for(i = 1 ; i<ans.size() ; i++){
+                        add(ans.get(i),"todo.txt",true);
+                    }
+                }
+                else
+                {
+                    //System.out.println("letseee");
+                    PrintWriter writer = new PrintWriter(f);
+                    writer.print("");
+                    // other operations
+                    writer.close();
+//                    if (f.delete()) {
+//                            System.out.println("hogyi"); //you might want to check if delete was successfull
+//                    }
+//                    else
+//                    {
+//                         System.out.println("nope");
+//                    }
+                }
+			}
+			catch( Exception e){
+				System.out.println("todo does not exist.");
+			}
+		}
 		public static void listing(){
 			try{
 				File f = new File("todo.txt");
@@ -70,6 +126,13 @@ class Todo{
 					System.out.println("Added todo: "+"\""+args[1]+"\"");
 				}else{
 					System.out.println("Error: Missing todo string. Nothing added!");
+                }
+            }
+            else if(args[0].equals("del")){
+				if (args.length == 2){
+						del(Integer.parseInt(args[1]));
+                }else{
+						System.out.println("Error: Missing NUMBER for deleting todo.");
                 }
             }
         }
