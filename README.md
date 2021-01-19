@@ -25,3 +25,13 @@ $ java Todo done NUMBER      # Complete a todo
 $ java Todo help             # Show usage
 $ java Todo report           # Statistics
 ```
+
+### 2. List all pending todos
+
+Use the `ls` command to see all the todos that are not yet complete. The most recently added todo will be displayed first.
+
+```
+$ java Todo ls
+[2] todo 2
+[1] todo 1
+```
