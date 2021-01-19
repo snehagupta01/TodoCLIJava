@@ -75,3 +75,13 @@ Attempting to mark a non-existent todo item as completed will display an error m
 ```
 $ java Todo done 5
 Error: todo #5 does not exist.
+```
+
+### 6. Generate a report
+
+Use the `report` command to see the latest tally of pending and completed todos.
+
+```
+$ java Todo report
+dd/mm/yyyy Pending : 1 Completed : 4
+```

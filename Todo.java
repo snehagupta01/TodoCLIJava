@@ -142,7 +142,31 @@ class Todo{
 				System.out.println("todo does not exist.");
 			}
 		}
-		
+		static void report(){
+			try{
+				int todo =0;
+				int done = 0;
+				File f = new File("todo.txt");
+				File f1 = new File("done.txt");
+				if (!f.exists())
+					f.createNewFile();
+				if (!f1.exists())
+					f1.createNewFile();
+				BufferedReader br = new BufferedReader(new FileReader("todo.txt"));
+				BufferedReader br1 = new BufferedReader(new FileReader("done.txt"));
+				while ( br.readLine()!=null)
+					todo+=1;
+				while(br1.readLine()!=null)
+					done+=1;
+					SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+					Date date = new Date();
+			
+					System.out.printf("%s Pending : %d Completed : %d", formatter.format(date), todo, done);
+			}
+			catch( Exception e ){
+				System.out.println("File not found");
+			}
+		}
         public static void main(String args[])
         {
             if (args.length==0 || args[0].equals("help"))
@@ -175,6 +199,9 @@ class Todo{
 				}else{
                     System.out.println("Error: Missing NUMBER for marking todo as done.");	
 				}
+            }
+            else if(args[0].equals("report")){
+					report();
             }
             
         }
